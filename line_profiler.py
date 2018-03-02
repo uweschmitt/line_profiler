@@ -59,11 +59,11 @@ else:
 
 def format_time(t):
     if t >= 1000000:
-        return u"%.1f[s] " % (t / 1000000.0)
+        return u"%.1fs " % (t / 1000000.0)
     elif t >= 1000:
-        return u"%.1f[ms]" % (t / 1000.0)
+        return u"%.1fms" % (t / 1000.0)
     else:
-        return u"%.1f[µs]" % t
+        return u"%.1fµs" % t
 
 CO_GENERATOR = 0x0020
 def is_generator(f):
@@ -196,7 +196,7 @@ def show_func(filename, start_lineno, func_name, timings, unit,
     if stream is None:
         stream = sys.stdout
 
-    template = '%6s %9s %15s %11s %8s  %-s'
+    template = '%6s %9s %13s %9s %8s  %-s'
     d = {}
     total_time = 0.0
     linenos = []
@@ -232,15 +232,15 @@ def show_func(filename, start_lineno, func_name, timings, unit,
     for lineno, nhits, time in timings:
         if scalar != 1:
             d[lineno] = (nhits,
-                '%8.1f' % (time * scalar),
-                '%8.1f' % (float(time) * scalar / nhits),
+                '%6.1f' % (time * scalar),
+                '%6.1f' % (float(time) * scalar / nhits),
                 '%5.1f' % (100 * time / total_time) )
         else:
 
             time_str = format_time(time)
             per_hit_str = format_time(time / nhits)
-            d[lineno] = (nhits, '%8s' % time_str,
-                                '%8s' % per_hit_str,
+            d[lineno] = (nhits, '%6s' % time_str,
+                                '%6s' % per_hit_str,
                                 '%5.1f' % (100 * time / total_time) )
     linenos = range(start_lineno, start_lineno + len(sublines))
     empty = ('', '', '', '')
