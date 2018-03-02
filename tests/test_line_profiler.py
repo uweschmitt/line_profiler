@@ -97,3 +97,6 @@ class TestLineProfiler(unittest.TestCase):
         self.assertEqual(len(timings), 2)
         for timing in timings.values():
             self.assertEqual(timing.nhits, 1)
+
+if __name__ == '__main__':
+    unittest.main()
