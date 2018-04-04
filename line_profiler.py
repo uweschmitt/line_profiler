@@ -59,11 +59,11 @@ else:
 
 def format_time(t):
     if t >= 1000000:
-        return "%.1fs " % (t / 1000000.0)
+        return u"%.1fs " % (t / 1000000.0)
     elif t >= 1000:
-        return "%.1fms" % (t / 1000.0)
+        return u"%.1fms" % (t / 1000.0)
     else:
-        return "%.1fµs" % t
+        return u"%.1fµs" % t
 
 
 CO_GENERATOR = 0x0020
@@ -256,7 +256,7 @@ def show_func(filename, start_lineno, func_name, timings, unit,
         nhits, time, per_hit, percent = d.get(lineno, empty)
         txt = template % (lineno, nhits, time, per_hit, percent,
                           line.rstrip('\n').rstrip('\r'))
-        stream.write(txt)
+        stream.write(txt.encode('utf-8'))
         stream.write("\n")
     stream.write("\n")
 
