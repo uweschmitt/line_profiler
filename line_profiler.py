@@ -59,11 +59,12 @@ else:
 
 def format_time(t):
     if t >= 1000000:
-        return u"%.1fs " % (t / 1000000.0)
+        return "%.1fs " % (t / 1000000.0)
     elif t >= 1000:
-        return u"%.1fms" % (t / 1000.0)
+        return "%.1fms" % (t / 1000.0)
     else:
-        return u"%.1fµs" % t
+        return "%.1fµs" % t
+
 
 CO_GENERATOR = 0x0020
 def is_generator(f):
